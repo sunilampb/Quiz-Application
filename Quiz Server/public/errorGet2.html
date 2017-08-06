@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fetch GET error 2</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            margin: 2em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>Sample fetch Error #2 </h2>
+    <button id="TheButton">Get it</button>
+    <p>Open up the developer tool console to see more information.</p>
+    <div>
+        <p>Raw information:</p>
+        <p id="Info"></p>
+        <p>JSON stringified information:</p>
+        <p id="Info2"></p>
+    </div>
+    <script>
+        var infoP = document.getElementById("Info");
+        var infoP2 = document.getElementById("Info2");
+        
+        window.onload = function() {
+            var pButton = document.getElementById("TheButton");
+            pButton.addEventListener("click", getIt);
+        }
+
+        function getIt() {
+            // Bad URL path here
+            fetch('/allQss').then(function(response) {
+                if(response.ok) {
+                    return response.json(); // a promise
+                } else {
+                    let info = `Status code: ${response.status}, ${response.statusText}`;
+                    console.log(response);
+                    return Promise.reject(info); //rejected promise!
+                }
+            }) // Returns a promise
+            .then(function(data) {
+                infoP.innerHTML = data;
+                infoP2.innerHTML = escapeHtml(JSON.stringify(data));
+                console.log(data);
+                })
+            .catch(function(msg){
+                console.log("Something bad: " + msg);
+                infoP2.innerHTML = msg;
+            })
+        }
+        
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        }
+
+    </script>
+</body>
+
+</html>

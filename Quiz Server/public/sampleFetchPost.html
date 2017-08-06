@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fetch POST Example 1</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            margin: 2em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>Sample fetch POST #1</h2>
+    <button id="TheButton">Post it</button>
+    <script>
+        var q = {
+            question: "Who is on first?",
+            choices: ["Who", "What", "I dunno", "Abbot"],
+            answer: 0
+        };
+
+        window.onload = function() {
+            var pButton = document.getElementById("TheButton");
+            pButton.addEventListener("click", postIt);
+        }
+
+
+        function postIt() {
+            fetch('http://127.0.0.2:5555/addQ', {
+                    method: 'POST',
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        q: q
+                    })
+                }).then(function(response) {
+                    console.log('Request status code: ', response.statusText, response.status, response.type);
+                });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+[
+    {
+        "question": "Which are the two non-semantic elements?",
+        "choices": ["<p> and <h>", "<section> and <article>",
+                        "<div> and <span>", "<em> and <strong>"],
+        "answer": 2
+            },
+    {
+        "question": "Which is an example of a class selector?",
+        "choices": ["p", "section > p", "#ThisThing", ".error"],
+        "answer": 3
+            },
+    {
+        "question": "Which is an example of an id selector?",
+        "choices": ["p", "section > p", "#ThisThing", ".error"],
+        "answer": 2
+            },
+    {
+        "question": "Which of the following are attributes?",
+        "choices": ["p", "section", "class", "article"],
+        "answer": 2
+            },
+    {
+        "question": "Which of the following do not belong in the <head>?",
+        "choices": ["p", "meta", "title", "link"],
+        "answer": 0
+            },
+    {
+        "question": "Which of the following can be put in an <ol>?",
+        "choices": ["p", "li", "section", "a"],
+        "answer": 1
+            },
+    {
+        "question": "JavaScript is a",
+        "choices": ["strongly type language", "weakly typed language"],
+        "answer": 1
+            },
+    {
+        "question": "Can JavaScript arrays change size after creation?",
+        "choices": ["only if you call realloc()", "never", "sure"],
+        "answer": 2
+            },
+    {
+        "question": "Which value is not considered falsey?",
+        "choices": ["NaN", "null", "13", "false"],
+        "answer": 2
+            },
+    {
+        "question": "Can you add properties to a JavaScript object after it has been created?",
+        "choices": ["yes", "never", "only if you call realloc()", "depends on JavaScript version"],
+        "answer": 0
+            }
+            ]

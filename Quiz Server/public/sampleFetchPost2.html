@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fetch POST Example #2</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            margin: 2em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>Sample fetch POST</h2>
+    <button id="TheButton">Post it</button>
+    <p>Response JSON:</p>
+    <p id="Info"></p>
+    <script>
+        var q = {
+            question: "Will the wind blow today?",
+            choices: ["Yes", "No", "Maybe"],
+            answer: 0
+        };
+        var infoP = document.getElementById("Info");
+        
+        window.onload = function() {
+            var pButton = document.getElementById("TheButton");
+            pButton.addEventListener("click", postIt);
+        }
+
+        function postIt() {
+            const addUrl = 'http://127.0.0.2:5555/addQ';
+            fetch(addUrl,{
+                    method: 'POST', 
+                    mode: 'no-cors',
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        q: q
+                    })
+                }).then(function(response) {
+                    console.log('Request status code: ', response.statusText, response.status, response.type);
+                    return response.json();
+                })
+                .then(function(data) {
+                    infoP.innerHTML = escapeHtml(JSON.stringify(data));
+                        console.log(data);
+                });
+        }
+            
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        }
+
+    </script>
+</body>
+
+</html>

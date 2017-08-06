@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fetch GET example 1</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            margin: 2em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>Sample fetch GET #1 </h2>
+    <button id="TheButton">Get it</button>
+    <p>Open up the developer tool console to see more information.</p>
+    <div>
+        <p id="Info"></p>
+    </div>
+    <script>
+        var infoP = document.getElementById("Info");
+        
+        window.onload = function() {
+            var pButton = document.getElementById("TheButton");
+            pButton.addEventListener("click", getIt);
+        }
+
+        function getIt() {
+            fetch('/allQs').then(function(response) {
+                infoP.innerHTML = response;
+                console.log(response);
+                });
+        }
+
+    </script>
+</body>
+
+</html>
